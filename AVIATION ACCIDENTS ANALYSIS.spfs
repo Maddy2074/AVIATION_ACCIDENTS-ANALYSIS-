@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>allowDataLocalInfile</key>
+			<integer>1</integer>
+			<key>database</key>
+			<string>PortfolioProject</string>
+			<key>enableClearTextPlugin</key>
+			<integer>1</integer>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>6279432279228337800</string>
+			<key>name</key>
+			<string>localhost</string>
+			<key>port</key>
+			<integer>3306</integer>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>1</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8mb4</string>
+			<key>contentFilterV2</key>
+			<dict>
+				<key>children</key>
+				<array/>
+				<key>filterClass</key>
+				<string>groupNode</string>
+				<key>isConjunction</key>
+				<true/>
+			</dict>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
+			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRk
+			YXRhgAGoCwwXGBkaHiVVJG51bGzTDQ4PEBMWV05TLmtleXNaTlMu
+			b2JqZWN0c1YkY2xhc3OiERKAAoADohQVgASABYAHVHR5cGVUcm93
+			c18QHVNlbGVjdGlvbkRldGFpbFR5cGVOU0luZGV4U2V00hsPHB1c
+			TlNSYW5nZUNvdW50EACABtIfICEiWiRjbGFzc25hbWVYJGNsYXNz
+			ZXNaTlNJbmRleFNldKIjJFpOU0luZGV4U2V0WE5TT2JqZWN00h8g
+			JidcTlNEaWN0aW9uYXJ5oiYkAAgAEQAaACQAKQAyADcASQBMAFEA
+			UwBcAGIAaQBxAHwAgwCGAIgAigCNAI8AkQCTAJgAnQC9AMIAzwDR
+			ANMA2ADjAOwA9wD6AQUBDgETASAAAAAAAAACAQAAAAAAAAAoAAAA
+			AAAAAAAAAAAAAAABIw==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{6, 4009}, {1138.5, 689}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>create table Aviation_accident (
+Dates varchar(255),
+types varchar(255),
+registration varchar(255),
+operator varchar(255),
+fatalities int,
+location varchar(255),
+country varchar(255),
+cat varchar(255),
+years varchar(255)
+ )
+ 
+-- Top 5 aircraft types with the most accidents 
+
+SELECT types, COUNT(*) AS Total_Accidents
+FROM Aviation_accident
+GROUP BY types
+ORDER BY Total_Accidents DESC
+LIMIT 5;
+
+-- Top 10 Countries with highest number of fatalities 
+
+SELECT country, SUM(fatalities) AS Total_Fatalities,COUNT(*) AS Total_Accidents
+FROM Aviation_accident
+GROUP BY country
+ORDER BY Total_Fatalities DESC
+LIMIT 10;
+
+-- TOP 10 OPERATORS HAVING THE MOST ACCIDENTS 
+SELECT operator, COUNT(*) AS Total_Accidents,SUM(fatalities) AS Total_Fatalities
+FROM Aviation_accident
+GROUP BY operator
+ORDER BY Total_Accidents DESC
+LIMIT 10;
+
+
+--  Total number of fatalities by year
+select years, Count(*) as Total_Fatalities
+from Aviation_accident 
+Group by years
+order by years asc
+ ;
+
+-- TOP 10 locations having the most accidents 
+select location, Count(*) 
+from Aviation_accident
+group by location 
+order by location desc 
+limit 10;
+
+-- Average number of fatalities per accident by operator
+SELECT operator, AVG(fatalities) AS Avg_Fatalities_Per_Accident
+FROM Aviation_accident
+GROUP BY operator
+ORDER BY Avg_Fatalities_Per_Accident DESC
+limit 200;
+
+</string>
+			<key>table</key>
+			<string>Aviation_accident</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>300.5</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>8.0.31</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
